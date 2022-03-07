@@ -1,0 +1,31 @@
+class Solution{
+  public:
+              Node* merge(Node* a, Node* b)
+              {
+                  if(!a) return b;
+                  if(!b) return a;
+                  if(a->data > b->data) swap(a, b);
+                  
+                          Node* head = a;
+                          while(a && b)
+                          { Node* temp = NULL;
+                              while(a && a->data <= b->data)
+                              { temp = a;
+                                a = a->next;
+                              }
+                            temp->next = b;
+                             swap(a, b);
+                          }
+                        return head;
+              }
+              
+             Node * mergeKLists(Node *arr[], int K)
+             {
+                 if(K == 1) return arr[0];
+                 Node* head = arr[0];
+                    for(int i = 1; i  < K; i++)
+                           head =  merge(head, arr[i]);
+                           
+                  return head;
+             }
+};
