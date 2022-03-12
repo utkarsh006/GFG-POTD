@@ -1,0 +1,28 @@
+class Solution {
+  public:
+    int checkMirrorTree(int n, int e, int A[], int B[]) 
+    {
+         map<int,vector<int>> adjA,adjB;
+        
+        for(int i=0; i< 2*e ; i+= 2 )
+        {
+            
+            adjA[A[i]].push_back(A[i+1]);
+            
+            adjB[B[i]].insert(adjB[B[i]].begin() , B[i+1]);
+        }
+        
+        if(adjA.size() != adjB.size())
+            return 0;
+        
+        
+        for(auto e: adjA)
+        {
+            if(e.second != adjB[e.first] )
+                return 0;
+            
+        }
+        return 1;
+    }
+    
+};
