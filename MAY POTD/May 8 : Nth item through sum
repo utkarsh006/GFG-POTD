@@ -1,0 +1,20 @@
+class Solution{
+public:
+    int nthItem(int L1, int L2, int A[], int B[], int N)
+    {
+        set<int> ans;
+        
+        for(int i=0;i<L1;i++)
+        {
+            for(int j=0;j<L2;j++)
+              ans.insert(A[i]+B[j]);
+        }
+        
+        for(auto it: ans)
+        {
+           N--;
+           if(N==0) return it;
+       }
+       return -1;
+    }
+};
