@@ -1,0 +1,41 @@
+/* Geek lost the password of his super locker. He remembers the number of digits N as well as the sum S of all the digits of his password. 
+He know that his password is the largest number of N digits that can be made with given sum S.
+As he is busy doing his homework, help him retrieving his password.
+
+Input:
+N = 5, S = 12
+Output:
+93000
+Explanation:
+Sum of elements is 12. Largest possible 
+5 digit number is 93000 with sum 12.   */
+
+class Solution
+{
+    public:
+    //Function to return the largest possible number of n digits
+    //with sum equal to given sum.
+    string largestNumber(int n, int sum)
+    {
+       if(sum > 9*n)  return "-1";
+       
+       string ans;
+       int curr = 9;
+              
+              while(sum)
+              {
+                  if(sum-curr >= 0)
+                  {
+                      ans += to_string(curr);
+                      sum -= curr;
+                  }
+                  else
+                     curr--;
+              }
+              
+              while(ans.size()!=n)
+                   ans += '0';
+                   
+       return ans;
+    }
+};
